@@ -1,0 +1,23 @@
+<section>
+    <button matButton="filled" class="button" (click)="back()">Volver</button>
+<form class="form">
+    <span class="title">Register</span>
+    <label for="username" class="label">Username</label>
+    <input type="text" id="username" name="username" required="" class="input">
+    <label for="password" class="label">Password</label>
+     <div style="position: relative;">
+      <input [type]="showPassword ? 'text' : 'password'" id="password" name="password" required class="input" />
+      <button type="button" (click)="togglePassword()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
+        <span *ngIf="showPassword">🙈</span>
+        <span *ngIf="!showPassword">👁️</span>
+      </button>
+    </div>
+      <select name="" id="" class="input">
+        <option value="" disabled selected>Elige el Rol que vas a tener</option>
+        <option value="LECTOR">Lector</option>
+        <option value="AUTOR">Autor</option>
+    </select>
+    <button type="submit" class="submit">Register</button>
+  </form>
+</section>
+
