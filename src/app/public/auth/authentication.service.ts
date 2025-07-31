@@ -23,4 +23,8 @@ export class AuthenticationService {
   getToken() {
     return localStorage.getItem('token');
   }
+
+  register(form: any) {
+    return this.#http.post(`${this.API_URL}/register`, form);
+  }
 }

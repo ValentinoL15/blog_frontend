@@ -7,9 +7,12 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { tokenInterceptor } from './interceptors/token.interceptor';
+import { provideToastr } from 'ngx-toastr';
+import { spinnerInterceptor } from './interceptors/spinner.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(withEventReplay()),
-    provideHttpClient(withFetch(),withInterceptors([tokenInterceptor])), provideAnimationsAsync()
+    provideHttpClient(withFetch(),withInterceptors([spinnerInterceptor,tokenInterceptor])), provideAnimationsAsync(),provideAnimations(), 
+    provideToastr()
   ]
 };

@@ -1,23 +1,26 @@
 <section>
-    <button matButton="filled" class="button" (click)="back()">Volver</button>
-<form class="form">
+    <button matButton="filled" mat-raised-button class="button" (click)="back()">Volver</button>
+<form class="form" [formGroup]="form">
     <span class="title">Register</span>
     <label for="username" class="label">Username</label>
-    <input type="text" id="username" name="username" required="" class="input">
-    <label for="password" class="label">Password</label>
+    <input type="text" id="username" name="username" required="true" class="input" formControlName="username">
+      <mat-error *ngIf="form.get('username')?.touched && form.get('username')?.hasError('required')">
+    El campo usuario es obligatorio
+  </mat-error>
+    <label for="password" class="label" >Password</label>
      <div style="position: relative;">
-      <input [type]="showPassword ? 'text' : 'password'" id="password" name="password" required class="input" />
+      <input [type]="showPassword ? 'text' : 'password'" id="password" name="password" required class="input" formControlName="password" />
       <button type="button" (click)="togglePassword()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
         <span *ngIf="showPassword">🙈</span>
         <span *ngIf="!showPassword">👁️</span>
       </button>
     </div>
-      <select name="" id="" class="input">
+      <select name="" id="" class="input" formControlName="rolesList">
         <option value="" disabled selected>Elige el Rol que vas a tener</option>
-        <option value="LECTOR">Lector</option>
-        <option value="AUTOR">Autor</option>
+        <option value="5">Lector</option>
+        <option value="4">Autor</option>
     </select>
-    <button type="submit" class="submit">Register</button>
+    <button type="submit" class="submit" (click)="register()">Register</button>
   </form>
 </section>
 

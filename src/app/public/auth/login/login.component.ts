@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { Session } from 'inspector';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent {
 
   router = inject(Router);
   authService = inject(AuthenticationService);
+  toastr = inject(ToastrService)
   form: FormGroup;
 
   constructor(private fb:FormBuilder) {
@@ -33,9 +35,11 @@ export class LoginComponent {
       next: (res : any) => {
         localStorage.setItem('token', res.jwt);
         this.router.navigate(['/home']);
+        this.toastr.success('Login successful', 'Success');
       },
       error: (err) => {
         console.error('Login failed', err);
+        this.toastr.error(err.error.message, 'Error');
       }
     })
   }
