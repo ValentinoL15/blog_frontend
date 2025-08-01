@@ -1,0 +1,29 @@
+.card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 400px;
+}
+
+.clamp-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; // limita a 4 líneas
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}

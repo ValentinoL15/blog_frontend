@@ -1,0 +1,18 @@
+@for (blog of blogs; track blog.blog_id) {
+    <mat-card class="card-container" appearance="outlined">
+        <mat-card-header class="card-header">
+            <mat-card-title>{{blog.titulo}}</mat-card-title>
+            <mat-card-subtitle>{{blog.etiqueta}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p class="clamp-text">
+                {{blog.contenido}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions class="card-actions">
+            <p>Publicado: <strong>{{blog.fecha_lanzamiento | date}}</strong></p>
+            <p>Creador: <strong>{{blog.autor.username}}</strong></p>
+        </mat-card-actions>
+    </mat-card>
+}
+    
