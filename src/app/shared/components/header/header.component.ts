@@ -1,13 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthenticationService } from '../../../public/auth/authentication.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-header',
-  imports: [MatIconModule],
+  imports: [MatIconModule, CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
+
+showCrearBlogButton = false;
+authService = inject(AuthenticationService)
+
+ngOnInit(): void {
+  this.showCrearBlogButton = this.authService.hasRole('ROLE_AUTOR');
+}
 
 }
