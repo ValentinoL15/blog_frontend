@@ -1,0 +1,27 @@
+<div class="form">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="mb-3">
+            <label class="form-label">Titulo</label>
+            <input type="text" class="form-control" placeholder="Titulo" aria-describedby="emailHelp" formControlName="titulo">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contenido</label>
+            <textarea type="text" class="form-control" placeholder="Comienza tu blog..."
+                rows="15" formControlName="contenido"></textarea>
+        </div>
+
+        <select class="form-select form-select-lg mb-3" aria-label="small select example" formControlName="etiqueta">
+            <option selected disabled>Selecciona el Tema</option>
+            <option value="POLITICA">Política</option>
+            <option value="TECNOLOGIA">Tecnología</option>
+            <option value="ENTRETENIMIENTO">Entretenimiento</option>
+            <option value="VIAJES">Viajes</option>
+            <option value="SALUD">Salud</option>
+            <option value="DEPORTES">Deportes</option>
+            <option value="EDUCACION">Educación</option>
+        </select>
+        <div style="display: flex; justify-content: end; width: 100%;">
+            <button type="submit" class="btn btn-primary">{{ blogToEdit ? 'Guardar Cambios' : 'Publicar' }}</button>
+        </div>
+    </form>
+</div>

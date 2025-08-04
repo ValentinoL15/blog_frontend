@@ -1,0 +1,17 @@
+<app-header></app-header>
+@if (!spinner.loading()) {
+@if (myBlogs$.length > 0) {
+    <div style="width: 100%; justify-content: end; display: flex; padding: 20px;">
+        <button matButton="filled" class="btn btn-primary btn-lg" [routerLink]="['/crear']">Crear Blog</button>
+    </div>
+    
+<section>
+    <app-card-blog [blogs]="myBlogs$" [mostrarAcciones]="true"></app-card-blog>
+</section>
+} @else {
+<div class="sin-contenido">
+    Todavía no has publicado ningun artículo
+</div>
+}
+}
+

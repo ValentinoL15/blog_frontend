@@ -1,0 +1,46 @@
+import { Component, inject } from '@angular/core';
+import { BlogFormComponent } from "../../../shared/components/blog-form/blog-form.component";
+import { HeaderComponent } from '../../../shared/components/header/header.component';
+import { BlogService } from '../../services/blog.service';
+import { Blog } from '../../../interfaces/blog';
+import { ToastrService } from 'ngx-toastr';
+
+@Component({
+  selector: 'app-crear-blog',
+  imports: [BlogFormComponent,HeaderComponent],
+  templateUrl: './crear-blog.component.html',
+  styleUrl: './crear-blog.component.scss'
+})
+export class CrearBlogComponent {
+
+  blogSeleccionado: Blog | null = null;
+  toastr = inject(ToastrService)
+
+  blogService = inject(BlogService)
+
+  guardarBlog(data: any) {
+  if (this.blogSeleccionado) {
+    // Editar
+    this.blogService.updateBlog(this.blogSeleccionado.blog_id, data).subscribe({
+      next: (res: Blog) => {
+        this.toastr.success('Blog editado con éxito')
+      },
+      error: (err : any) => {
+        this.toastr.error(err.error.message)
+      }
+    })
+  } else {
+    // Crear
+    this.blogService.crearBlog(data).subscribe({
+      next: (res: any) => {
+        this.toastr.success('Blog creado con éxito', res)
+      },
+      error: (err:any) => {
+        this.toastr.error('Error al crear el blog',)
+        console.log("Erroraso:", err)
+      }
+    })
+  }
+}
+
+}

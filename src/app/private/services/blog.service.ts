@@ -17,4 +17,20 @@ export class BlogService {
   getBlogs(): Observable<Blog[]> {
     return this.#http.get<Blog[]>(this.API_URL);
   }
+
+  getBlogByEtiqueta(etiqueta:string): Observable<Blog[]> {
+    return this.#http.get<Blog[]>(`${this.API_URL}/contenido/${etiqueta}`)
+  }
+
+  getMyBlogs(): Observable<Blog[]> {
+    return this.#http.get<Blog[]>(`${this.API_URL}/myBlogs`)
+  }
+
+  crearBlog(form:Blog): Observable<Blog> {
+    return this.#http.post<Blog>(`${this.API_URL}/crear-blog`, form)
+  }
+
+  updateBlog(id:any, form:Blog): Observable<Blog> {
+    return this.#http.put<Blog>(`${this.API_URL}/editar-blog/${id}`, form)
+  }
 }

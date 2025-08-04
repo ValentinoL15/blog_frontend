@@ -2,11 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthenticationService } from '../../../public/auth/authentication.service';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-header',
-  imports: [MatIconModule, CommonModule],
+  imports: [MatIconModule, CommonModule,RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

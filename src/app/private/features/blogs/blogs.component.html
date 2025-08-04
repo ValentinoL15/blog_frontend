@@ -1,0 +1,15 @@
+<app-header></app-header>
+
+@if (!spinner.loading()) {
+     @if (blogs$.length >= 1) {
+    <section>
+      <app-card-blog [blogs]="blogs$"></app-card-blog>
+    </section>
+  }
+  @else {
+    <div class="sin-contenido">
+      Todavía nadie ha publicado en la sección {{ etiqueta | uppercase }}
+    </div>
+  }
+} 
+

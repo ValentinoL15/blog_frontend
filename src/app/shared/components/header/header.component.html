@@ -9,36 +9,36 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" [routerLink]="['/home']">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Autores</a>
+                    <a class="nav-link active" aria-current="page" [routerLink]="['/autores']">Autores</a>
                 </li>
 
                 <!-- Estos se muestran solo en pantallas grandes (desktop) -->
                 <li class="nav-item d-none d-lg-block">
-                    <a class="nav-link" href="#">Política</a>
+                    <a class="nav-link" [routerLink]="['/blogs', 'politica']">Política</a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
-                    <a class="nav-link" href="#">Tecnología</a>
+                    <a class="nav-link" [routerLink]="['/blogs', 'tecnologia']">Tecnología</a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
-                    <a class="nav-link" href="#">Salud</a>
+                    <a class="nav-link" [routerLink]="['/blogs', 'salud']">Salud</a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
-                    <a class="nav-link" href="#">Deportes</a>
+                    <a class="nav-link" [routerLink]="['/blogs', 'deportes']">Deportes</a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
-                    <a class="nav-link" href="#">Viajes</a>
+                    <a class="nav-link" [routerLink]="['/blogs', 'viajes']">Viajes</a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
-                    <a class="nav-link" href="#">Educación</a>
+                    <a class="nav-link" [routerLink]="['/blogs', 'educacion']">Educación</a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
-                    <a class="nav-link" href="#">Entretenimiento</a>
+                    <a class="nav-link" [routerLink]="['/blogs', 'entretenimiento']">Entretenimiento</a>
                 </li>
                 <li class="nav-item d-none d-lg-block" *ngIf="showCrearBlogButton">
-                    <a class="nav-link" href="#">Mi Blogs</a>
+                    <a class="nav-link" [routerLink]="['/myBlogs' ]">Mi Blogs</a>
                 </li>
 
                 <!-- Dropdown que solo aparece en pantallas chicas (celulares) -->
@@ -48,13 +48,13 @@
                         Secciones
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Política</a></li>
-                        <li><a class="dropdown-item" href="#">Tecnología</a></li>
-                        <li><a class="dropdown-item" href="#">Salud</a></li>
-                        <li><a class="dropdown-item" href="#">Deportes</a></li>
-                        <li><a class="dropdown-item" href="#">Viajes</a></li>
-                        <li><a class="dropdown-item" href="#">Educación</a></li>
-                        <li><a class="dropdown-item" href="#">Entretenimiento</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/blogs', 'politica']">Política</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/blogs', 'tecnologia']">Tecnología</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/blogs', 'salud']">Salud</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/blogs', 'deportes']">Deportes</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/blogs', 'viajes']">Viajes</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/blogs', 'educacion']">Educación</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/blogs', 'entretenimiento']">Entretenimiento</a></li>
                     </ul>
                 </li>
             </ul>

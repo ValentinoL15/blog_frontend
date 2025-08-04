@@ -6,8 +6,6 @@
     background: #FFEFBA;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    
 }
 
 .clamp-text {
@@ -18,7 +16,19 @@ background: linear-gradient(to right, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, F
   text-overflow: ellipsis;
 }
 
+.modal-body {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
 
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
 
 .card-actions {
     display: flex;

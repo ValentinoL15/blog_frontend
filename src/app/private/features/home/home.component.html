@@ -1,7 +1,4 @@
 <app-header></app-header>
-<div class="button-creator">
-    <button mat-raised-button color="primary" *ngIf="showCrearBlogButton" (click)="router.navigate(['/blog/create'])">Crear Blog</button>
-</div>
 <section>
     <app-card-blog [blogs]="blogs$"></app-card-blog>
 </section>

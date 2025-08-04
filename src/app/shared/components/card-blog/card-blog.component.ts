@@ -5,10 +5,13 @@ import {MatCardModule} from '@angular/material/card';
 import { Blog } from '../../../interfaces/blog';
 import { BlogService } from '../../../private/services/blog.service';
 import { CommonModule } from '@angular/common';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
 
 @Component({
   selector: 'app-card-blog',
-  imports: [MatButtonModule, MatCardModule, CommonModule],
+  imports: [MatButtonModule, MatCardModule, CommonModule, MatFormFieldModule, MatIconModule, MatInputModule],
   templateUrl: './card-blog.component.html',
   styleUrl: './card-blog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,6 +20,7 @@ import { CommonModule } from '@angular/common';
 export class CardBlogComponent implements OnInit {
 
   @Input() blogs: Blog[] = [];
+  @Input() mostrarAcciones = false;
 
   blogService = inject(BlogService);
 
