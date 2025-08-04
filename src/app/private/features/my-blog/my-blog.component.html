@@ -5,9 +5,9 @@
         <button matButton="filled" class="btn btn-primary btn-lg" [routerLink]="['/crear']">Crear Blog</button>
     </div>
     
-<section>
+<div>
     <app-card-blog [blogs]="myBlogs$" [mostrarAcciones]="true"></app-card-blog>
-</section>
+</div>
 } @else {
 <div class="sin-contenido">
     Todavía no has publicado ningun artículo

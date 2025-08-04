@@ -15,6 +15,7 @@ export class BlogFormComponent implements OnInit{
   @Output() formSubmit = new EventEmitter<any>();
 
   form!: FormGroup
+  fechaAhora = new Date().toISOString();
 
   constructor(private fb: FormBuilder) {
 
@@ -25,6 +26,10 @@ export class BlogFormComponent implements OnInit{
       titulo: [this.blogToEdit?.titulo || '', Validators.required ],
       contenido: [this.blogToEdit?.contenido || '', Validators.required],
       etiqueta: [this.blogToEdit?.etiqueta || '', Validators.required],
+      fecha_lanzamiento: [
+      this.blogToEdit?.fecha_lanzamiento || this.fechaAhora,
+      Validators.required
+    ]
     })
   }
 
@@ -32,17 +37,10 @@ export class BlogFormComponent implements OnInit{
     if (this.form.valid) {
       const blogData = this.form.value
 
-      const fechaAhora = new Date().toISOString();
-
-        const dataParaEnviar = {
-      ...blogData,
-      fecha_lanzamiento: fechaAhora,
-    };
-
       if(this.blogToEdit) {
         this.formSubmit.emit({ ...blogData, blog_id: this.blogToEdit.blog_id })
       } else {
-        this.formSubmit.emit(dataParaEnviar)
+        this.formSubmit.emit(blogData)
       }
       
     }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,13 @@ export class AuthenticationService {
   constructor() { }
 
   login(form: any) {
-    return this.#http.post(`${this.API_URL}/login`, form) 
+    return this.#http.post(`${this.API_URL}/login`, form).pipe(
+      tap((response: any) => {
+        if(response.jwt) {
+          localStorage.setItem('token', response.jwt)
+        }
+      })
+    ) 
   }
 
  hasRole(role: string): boolean {

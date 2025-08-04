@@ -26,8 +26,8 @@ export class BlogService {
     return this.#http.get<Blog[]>(`${this.API_URL}/myBlogs`)
   }
 
-  crearBlog(form:Blog): Observable<Blog> {
-    return this.#http.post<Blog>(`${this.API_URL}/crear-blog`, form)
+  crearBlog(form:any): Observable<any> {
+    return this.#http.post<any>(`${this.API_URL}/crear-blog`, form)
   }
 
   updateBlog(id:any, form:Blog): Observable<Blog> {

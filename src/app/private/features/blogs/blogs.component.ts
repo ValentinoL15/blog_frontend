@@ -8,6 +8,7 @@ import { HeaderComponent } from '../../../shared/components/header/header.compon
 import { CommonModule, NgIf } from '@angular/common';
 import { LoadingService } from '../../../public/auth/loading.service';
 import { SpinnerService } from '../../../spinner.service';
+import { AuthenticationService } from '../../../public/auth/authentication.service';
 
 @Component({
   selector: 'app-blogs',
@@ -23,6 +24,7 @@ export class BlogsComponent implements OnInit{
 
   route = inject(ActivatedRoute);
   blogService = inject(BlogService);
+  authService = inject(AuthenticationService)
   toastr = inject(ToastrService)
   spinner = inject(SpinnerService);
 
@@ -30,7 +32,7 @@ ngOnInit(): void {
   this.route.params.subscribe((params) => {
     this.etiqueta = params["etiqueta"];
     this.getBlogsByEtiqueta()
-  })
+  });
 }
 
 getBlogsByEtiqueta() {
@@ -40,7 +42,7 @@ getBlogsByEtiqueta() {
       console.log(this.blogs$)
     },
     error: (err) => {
-      this.toastr.error(err.error.message)
+      this.toastr.error("No se encuentran los blogs")
     }
   })
 }
