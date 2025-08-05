@@ -33,7 +33,6 @@ export class MyBlogComponent implements OnInit{
         console.log(this.myBlogs$)
       },
       error: (err) => {
-        this.toastr.error("Errorr")
         console.log(err)
       }
     })

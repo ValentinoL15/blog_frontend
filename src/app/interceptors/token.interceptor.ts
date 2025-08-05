@@ -18,10 +18,17 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
     return next(req); // no modifica la request
   }
 
+  if(authService.getToken()) {
+    req = req.clone({
+      headers: req.headers.set('Authorization', `Bearer ${authService.getToken()}`)
+    })
+  }
+  return next(req);
+
   console.log('Token:', localStorage.getItem('token'));
 
   const newRequest = req.clone({
-    headers: req.headers.append('Authorization', `Bearer ${token}`)
+    headers: req.headers.set('Authorization', `Bearer ${token}`)
   })
   return next(newRequest).pipe(
     catchError((error: HttpErrorResponse) => {

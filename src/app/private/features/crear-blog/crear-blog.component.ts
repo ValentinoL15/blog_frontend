@@ -4,6 +4,7 @@ import { HeaderComponent } from '../../../shared/components/header/header.compon
 import { BlogService } from '../../services/blog.service';
 import { Blog } from '../../../interfaces/blog';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-blog',
@@ -15,6 +16,7 @@ export class CrearBlogComponent {
 
   blogSeleccionado: Blog | null = null;
   toastr = inject(ToastrService)
+  router = inject(Router)
 
   blogService = inject(BlogService)
 
@@ -33,7 +35,8 @@ export class CrearBlogComponent {
     // Crear
     this.blogService.crearBlog(data).subscribe({
       next: (res: any) => {
-        this.toastr.success('Blog creado con éxito', res)
+        this.toastr.success('Blog creado con éxito', 'Éxito')
+        this.router.navigate(['/myBlogs'])
       },
       error: (err:any) => {
         this.toastr.error('Error al crear el blog',)

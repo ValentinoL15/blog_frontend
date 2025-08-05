@@ -6,7 +6,6 @@ import { ToastrService } from 'ngx-toastr';
 import { CardBlogComponent } from '../../../shared/components/card-blog/card-blog.component';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { CommonModule, NgIf } from '@angular/common';
-import { LoadingService } from '../../../public/auth/loading.service';
 import { SpinnerService } from '../../../spinner.service';
 import { AuthenticationService } from '../../../public/auth/authentication.service';
 
@@ -43,6 +42,7 @@ getBlogsByEtiqueta() {
     },
     error: (err) => {
       this.toastr.error("No se encuentran los blogs")
+      console.log(err)
     }
   })
 }
