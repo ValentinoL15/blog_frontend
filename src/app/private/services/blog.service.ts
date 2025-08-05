@@ -18,6 +18,10 @@ export class BlogService {
     return this.#http.get<Blog[]>(this.API_URL);
   }
 
+  getBlog(id:any):Observable<Blog> { 
+    return this.#http.get<Blog>(`${this.API_URL}/${id}`)
+  }
+
   getBlogByEtiqueta(etiqueta:string): Observable<Blog[]> {
     return this.#http.get<Blog[]>(`${this.API_URL}/contenido/${etiqueta}`)
   }
@@ -32,5 +36,9 @@ export class BlogService {
 
   updateBlog(id:any, form:Blog): Observable<Blog> {
     return this.#http.put<Blog>(`${this.API_URL}/editar-blog/${id}`, form)
+  }
+
+  deletBlog(id:any) {
+    return this.#http.delete(`${this.API_URL}/eliminar-blog/${id}`)
   }
 }

@@ -20,4 +20,8 @@ ngOnInit(): void {
   this.showCrearBlogButton = this.authService.hasRole('ROLE_AUTOR');
 }
 
+logOut(){
+  this.authService.logOut()
+}
+
 }

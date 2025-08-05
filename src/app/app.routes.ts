@@ -12,6 +12,7 @@ export const routes: Routes = [
     { path: 'register', loadComponent: () => import('./public/auth/register/register.component').then(m => m.RegisterComponent) },
     { path: 'blogs/:etiqueta', loadComponent: () => import('./private/features/blogs/blogs.component').then(m => m.BlogsComponent) },
     { path: 'myBlogs', loadComponent: () => import('./private/features/my-blog/my-blog.component').then(m => m.MyBlogComponent) },
-    { path: 'crear', loadComponent: () => import('./private/features/crear-blog/crear-blog.component').then(m => m.CrearBlogComponent) }
+    { path: 'crear', loadComponent: () => import('./private/features/crear-blog/crear-blog.component').then(m => m.CrearBlogComponent) },
+    { path: 'editar/:id', loadComponent: () => import('./private/features/crear-blog/crear-blog.component').then(m => m.CrearBlogComponent) },
     
 ];

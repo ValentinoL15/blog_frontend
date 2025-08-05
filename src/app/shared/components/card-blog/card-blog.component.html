@@ -3,8 +3,8 @@
 <mat-card class="card-container" appearance="outlined">
     @if (mostrarAcciones) {
     <div class="buttons">
-        <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">editar</button>
-        <button class="btn btn-outline-danger">eliminar</button>
+        <button class="btn btn-outline-success"  [routerLink]="['/editar/', blog.blog_id]">editar</button>
+        <button class="btn btn-outline-danger" (click)="deleteBlog(blog.blog_id)">eliminar</button>
     </div>
     }
 
@@ -34,15 +34,15 @@
             <form class="modal-body">
                 <mat-form-field appearance="outline" style="width: 80%;">
                     <mat-label>Título</mat-label>
-                    <input matInput placeholder="Placeholder" >
+                    <input matInput placeholder="Placeholder" [value]="blog.titulo">
                 </mat-form-field>
 
-                 <mat-form-field appearance="outline" style="width: 80%;">
+                <mat-form-field appearance="outline" style="width: 80%;">
                     <mat-label>Contenido</mat-label>
                     <textarea matInput placeholder="Placeholder" rows="10"></textarea>
                 </mat-form-field>
 
-                 <mat-form-field appearance="outline" style="width: 80%;">
+                <mat-form-field appearance="outline" style="width: 80%;">
                     <mat-label>Tema</mat-label>
                     <input matInput placeholder="Placeholder" >
                 </mat-form-field>

@@ -37,4 +37,8 @@ export class MyBlogComponent implements OnInit{
       }
     })
   }
+
+  onBlogEliminado(idEliminado: number) {
+  this.myBlogs$ = this.myBlogs$.filter(blog => blog.blog_id !== idEliminado);
+}
 }

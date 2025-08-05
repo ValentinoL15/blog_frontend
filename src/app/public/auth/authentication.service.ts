@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { tap } from 'rxjs';
 
@@ -12,6 +13,7 @@ export class AuthenticationService {
     private jwtHelper = new JwtHelperService();
 
   #http = inject(HttpClient);
+  router = inject(Router)
   constructor() { }
 
   login(form: any) {
@@ -51,6 +53,7 @@ getUserRole() {
  logOut() {
   if (typeof window !== 'undefined' && window.localStorage) {
     localStorage.removeItem('token');
+    this.router.navigate(['/login'])
   }
 }
 

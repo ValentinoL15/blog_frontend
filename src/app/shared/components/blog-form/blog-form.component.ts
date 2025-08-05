@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { Blog } from '../../../interfaces/blog';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
   templateUrl: './blog-form.component.html',
   styleUrl: './blog-form.component.scss'
 })
-export class BlogFormComponent implements OnInit{
+export class BlogFormComponent implements OnInit,OnChanges{
 
   @Input() blogToEdit: Blog | null = null
   @Output() formSubmit = new EventEmitter<any>();
@@ -31,6 +31,23 @@ export class BlogFormComponent implements OnInit{
       Validators.required
     ]
     })
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+      if (changes['blogToEdit'] && !changes['blogToEdit'].firstChange) {
+      this.patchForm();
+    }
+  }
+
+   private patchForm() {
+    if (this.blogToEdit) {
+      this.form.patchValue({
+        titulo: this.blogToEdit.titulo,
+        contenido: this.blogToEdit.contenido,
+        etiqueta: this.blogToEdit.etiqueta,
+        fecha_lanzamiento: this.blogToEdit.fecha_lanzamiento,
+      });
+    }
   }
 
   submit() {
