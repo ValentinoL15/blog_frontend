@@ -44,6 +44,10 @@ export class LoginComponent {
     })
   }
 
+  loginWithGoogle() {
+    window.location.href = 'http://localhost:8080/login/oauth2/code/google'
+  }
+
   goRegister() {
     this.router.navigate(['/register']);
   }
