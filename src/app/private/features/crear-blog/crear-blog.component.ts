@@ -47,7 +47,7 @@ export class CrearBlogComponent implements OnInit{
         this.router.navigate(['/myBlogs'])
       },
       error: (err : any) => {
-        this.toastr.error(err.error.message)
+        this.toastr.error(err.error.message || 'No se pudo editar el blog')
       }
     })
   } else {

@@ -58,7 +58,7 @@ export class RegisterComponent {
       },
       error: (err) => {
         console.error('Registration failed', err);
-        this.toastr.error(err.error.message, 'Error');
+        this.toastr.error(err.error.message || 'No se puedo registrar');
       }
     })
   }

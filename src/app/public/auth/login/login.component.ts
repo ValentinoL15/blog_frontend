@@ -39,7 +39,7 @@ export class LoginComponent {
       },
       error: (err) => {
         console.error('Login failed', err);
-        this.toastr.error(err.error.message, 'Error');
+        this.toastr.error(err.error.message || 'No se pudo iniciar sesión');
       }
     })
   }
