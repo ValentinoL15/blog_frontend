@@ -9,7 +9,8 @@ import { tap } from 'rxjs';
 })
 export class AuthenticationService {
 
-  API_URL = 'http://localhost:8080/api/auth';
+  //API_URL = 'http://localhost:8080/api/auth';
+  API_URL = 'https://airy-energy-production.up.railway.app/api/auth'
     private jwtHelper = new JwtHelperService();
 
   #http = inject(HttpClient);

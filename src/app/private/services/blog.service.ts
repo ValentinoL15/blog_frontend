@@ -8,7 +8,8 @@ import { Blog } from '../../interfaces/blog';
 })
 export class BlogService {
 
-  API_URL = 'http://localhost:8080/api/blogs';
+  //API_URL = 'http://localhost:8080/api/blogs';
+  API_URL = 'https://airy-energy-production.up.railway.app/api/blogs'
 
   #http = inject(HttpClient);
 
