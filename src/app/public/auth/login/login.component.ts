@@ -27,6 +27,12 @@ export class LoginComponent {
   }
 
   login() {
+
+      if (this.form.invalid) {
+    this.form.markAllAsTouched(); // para que muestre todos los errores
+    return;
+  }
+
     const formulario = {
       username: this.form.value.username,
       password: this.form.value.password  

@@ -3,10 +3,14 @@
       <p class="title">Welcome </p>
       <form class="form" [formGroup]="form">
         <input type="email" class="input" placeholder="Username" formControlName="username">
+         <div *ngIf="form.get('username')?.touched && form.get('username')?.invalid" class="error-message">
+    Por favor introduce un usuario
+  </div>
         <input type="password" class="input" placeholder="Password" formControlName="password">
-        <p class="page-link">
-          <span class="page-link-label">Forgot Password?</span>
-        </p>
+         <div *ngIf="form.get('password')?.touched && form.get('password')?.invalid" class="error-message">
+    Por favor introduce una contraseña
+  </div>
+       
         <button class="form-btn" type="submit" (click)="login()">Log in</button>
       </form>
       <p class="sign-up-label">
