@@ -4,10 +4,11 @@ import { AuthenticationService } from '../authentication.service';
 import { Session } from 'inspector';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule, CommonModule],
   standalone: true,
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
