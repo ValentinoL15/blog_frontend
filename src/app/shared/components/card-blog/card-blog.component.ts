@@ -25,6 +25,7 @@ export class CardBlogComponent implements OnInit {
   @Input() blogs: Blog[] = [];
   @Input() mostrarAcciones = false;
   @Output() blogEliminado = new EventEmitter<number>();
+  expandedMap = new Map<number, boolean>();
 
   blogService = inject(BlogService);
   toastr = inject(ToastrService)
@@ -35,6 +36,19 @@ export class CardBlogComponent implements OnInit {
   ngOnInit(): void {
     
   }
+
+  toggleExpanded(blogId: number) {
+  const current = this.expandedMap.get(blogId) || false;
+  this.expandedMap.set(blogId, !current);
+}
+
+isExpanded(blogId: number): boolean {
+  return this.expandedMap.get(blogId) || false;
+}
+
+trackByBlogId(index: number, blog: Blog): number {
+  return blog.blog_id;
+}
 
   getBlogs(){
     this.blogService.getBlogs().subscribe({

@@ -1,58 +1,31 @@
 <div class="card-wrapper">
     @for (blog of blogs; track blog.blog_id) {
-<mat-card class="card-container" appearance="outlined">
-    @if (mostrarAcciones) {
-    <div class="buttons">
-        <button class="btn btn-outline-success"  [routerLink]="['/editar/', blog.blog_id]">editar</button>
-        <button class="btn btn-outline-danger" (click)="deleteBlog(blog.blog_id)">eliminar</button>
-    </div>
-    }
-
-    <mat-card-header class="card-header">
-        <mat-card-title>{{blog.titulo}}</mat-card-title>
-        <mat-card-subtitle>{{blog.etiqueta}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-        <p class="clamp-text">
-            {{blog.contenido}}
-        </p>
-    </mat-card-content>
-    <mat-card-actions class="card-actions">
-        <p>Publicado: <strong>{{blog.fecha_lanzamiento | date}}</strong></p>
-        <p>Creador: <strong>{{blog.autor.username}}</strong></p>
-    </mat-card-actions>
-</mat-card>
-
-<!--MODAL DE EDICIÓN-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form class="modal-body">
-                <mat-form-field appearance="outline" style="width: 80%;">
-                    <mat-label>Título</mat-label>
-                    <input matInput placeholder="Placeholder" [value]="blog.titulo">
-                </mat-form-field>
-
-                <mat-form-field appearance="outline" style="width: 80%;">
-                    <mat-label>Contenido</mat-label>
-                    <textarea matInput placeholder="Placeholder" rows="10"></textarea>
-                </mat-form-field>
-
-                <mat-form-field appearance="outline" style="width: 80%;">
-                    <mat-label>Tema</mat-label>
-                    <input matInput placeholder="Placeholder" >
-                </mat-form-field>
-            </form>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+    <mat-card class="card-container" appearance="outlined">
+        @if (mostrarAcciones) {
+        <div class="buttons">
+            <button class="btn btn-outline-success" [routerLink]="['/editar/', blog.blog_id]">editar</button>
+            <button class="btn btn-outline-danger" (click)="deleteBlog(blog.blog_id)">eliminar</button>
         </div>
-    </div>
-</div>
-}
+        }
+
+        <mat-card-header class="card-header">
+            <mat-card-title>{{ blog.titulo }}</mat-card-title>
+            <mat-card-subtitle>{{ blog.etiqueta }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <p [ngClass]="{ 'clamp-text': !isExpanded(blog.blog_id) }">
+                {{ blog.contenido }}
+            </p>
+            <button mat-icon-button (click)="toggleExpanded(blog.blog_id)">
+                <mat-icon>{{ isExpanded(blog.blog_id) ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+        </mat-card-content>
+
+        <mat-card-actions class="card-actions">
+            <p>Publicado: <strong>{{ blog.fecha_lanzamiento | date }}</strong></p>
+            <p>Creador: <strong>{{ blog.autor.username }}</strong></p>
+        </mat-card-actions>
+    </mat-card>
+    }
 </div>

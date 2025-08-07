@@ -38,6 +38,7 @@ export class CrearBlogComponent implements OnInit{
   }
 
   guardarBlog(data: any) {
+
   if (this.blogSeleccionado) {
     // Editar
     this.blogService.updateBlog(this.blogSeleccionado.blog_id, data).subscribe({

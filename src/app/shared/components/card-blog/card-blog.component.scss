@@ -21,10 +21,17 @@ background: linear-gradient(to right, #FFFFFF, #FFEFBA);
 
 .clamp-text {
   display: -webkit-box;
-  -webkit-line-clamp: 3; // limita a 4 líneas
+  -webkit-line-clamp: 3; /* limita a 3 líneas */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: normal;
+}
+
+mat-card-content p {
+  white-space: pre-line;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .modal-body {
