@@ -14,5 +14,5 @@ export const routes: Routes = [
     { path: 'myBlogs', loadComponent: () => import('./private/features/my-blog/my-blog.component').then(m => m.MyBlogComponent) },
     { path: 'crear', loadComponent: () => import('./private/features/crear-blog/crear-blog.component').then(m => m.CrearBlogComponent) },
     { path: 'editar/:id', loadComponent: () => import('./private/features/crear-blog/crear-blog.component').then(m => m.CrearBlogComponent) },
-    
+    { path: 'oauth/redirect', loadComponent: () => import('./private/oauth/token-jwt/token-jwt.component').then(m => m.TokenJwtComponent) }
 ];
